@@ -8,7 +8,7 @@ router.get('/', (req: Request, res: Response) => {
 })
 
 router.post('/', (req: Request, res: Response) => {
-  let cat: Cat = {name: req.body.name, age: req.body.age}
+  let cat: Cat = {...req.body}
   res.json(cat)
 })
 
