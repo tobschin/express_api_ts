@@ -1,15 +1,21 @@
 import express, {Request, Response, Router} from 'express';
 import Cat from './cat'
+import CatEntity from './model/cat-entity';
 
-let router: Router = express.Router()
+const router: Router = express.Router()
 
-router.get('/', (req: Request, res: Response) => {
-  res.json({message: 'im on fire'})
+
+
+router.get('/', async (req: Request, res: Response) => {
+  const all = await CatEntity.find();
+  res.json(all);
 })
 
-router.post('/', (req: Request, res: Response) => {
-  let cat: Cat = {...req.body}
-  res.json(cat)
+router.post('/', async (req: Request, res: Response) => {
+  const cat: Cat = {...req.body}
+  const c = new CatEntity(cat);
+  const saved  = await c.save();
+  res.json(saved)
 })
 
 export default router;
