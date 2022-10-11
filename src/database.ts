@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 require("dotenv").config();
 
 const connectDb = () => {
-    console.log('DB' ,  process.env.MONGODB_URI)
+    console.log('MongoDb-Connection' ,  process.env.MONGODB_URI)
     return mongoose.connect(process.env.MONGODB_URI);
 }
 

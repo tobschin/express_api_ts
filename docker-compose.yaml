@@ -1,0 +1,27 @@
+version: '3'
+services:
+  app:
+    image: express_api_ts_app:latest
+    restart: "no"
+    build: .
+    ports:
+      - 3000:3000
+    networks:
+      - easy
+    depends_on:
+      - mongo
+    environment:
+      - MONGODB_URI=mongodb://mongo:27017/myapp
+  mongo:
+    image: mongo
+   # ports:
+   #   - 27017:27017 # nur wenn mongodb auch exposed
+    volumes:
+      - ./mongodb:/data/db
+    networks:
+      - easy
+volumes:
+ mongodb:
+
+networks:
+  easy:
