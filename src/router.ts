@@ -12,10 +12,17 @@ router.get('/', async (req: Request, res: Response) => {
 })
 
 router.post('/', async (req: Request, res: Response) => {
-  const cat: Cat = {...req.body}
-  const c = new CatEntity(cat);
-  const saved  = await c.save();
-  res.json(saved)
+
+  try{  
+    const cat: Cat = {...req.body}
+    const c = new CatEntity(cat);
+    const saved  = await c.save();
+    res.json(saved)
+
+  } catch {
+    res.status(500)
+    res.send('cannot create')
+  }
 })
 
 export default router;

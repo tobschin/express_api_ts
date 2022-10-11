@@ -1,15 +1,11 @@
-import express, {Express} from 'express';
-import connectDb from './database';
-import router from './router';
+import app from './app';
+import { connectDb } from './database';
 
-connectDb();
+connectDb().then(()=> {
+    app.listen(3000, 'localhost', ()=> {
+        console.log('started @ http://localhost:3000/api')
+    });
+}, err => {
+    console.error('DB-Connection could not be established', err)
+})
 
-const app: Express = express();
-
-app.use(express.json())
-
-app.use('/api', router)
-
-app.listen(3000, 'localhost', ()=> {
-    console.log('started @ http://localhost:3000/api')
-});
