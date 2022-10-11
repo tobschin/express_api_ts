@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
-
+require("dotenv").config();
 
 const connectDb = () => {
-    return mongoose.connect(`mongodb://localhost:27017/myapp`);
+    return mongoose.connect(process.env.MONGODB_URI);
 }
 
 const closeDB = () => {

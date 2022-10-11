@@ -1,5 +1,4 @@
-import  { Schema, model, Model } from "mongoose";
-import Cat from "../cat";
+import  { Schema, model } from "mongoose";
 
 const catSchema : Schema = new Schema({name : String, age: Number});
 const CatEntity = model('Cat', catSchema);
