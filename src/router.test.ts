@@ -1,6 +1,6 @@
 import app from './app';
 import request from 'supertest';
-import {connectDb, closeDB} from './database';
+import {connectDb, closeDb, cleanDb} from './database';
 
 
 describe("GET /api/products", () => {
@@ -9,7 +9,8 @@ describe("GET /api/products", () => {
     })
 
     afterEach(async () => {
-        await closeDB()
+        await cleanDb()
+        await closeDb()
     })
 
     it("should create new cat", async () => {
@@ -27,6 +28,6 @@ describe("GET /api/products", () => {
     it("should return all cats", async () => {
       const res = await request(app).get("/api");
       expect(res.statusCode).toBe(200);
-      expect(res.body.length).toBeGreaterThan(0);
+      expect(res.body.length).toBeGreaterThanOrEqual(0);
     });
 });

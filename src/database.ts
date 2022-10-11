@@ -6,10 +6,14 @@ const connectDb = () => {
     return mongoose.connect(process.env.MONGODB_URI);
 }
 
-const closeDB = () => {
+const closeDb = () => {
     return mongoose.connection.close()
 }
 
-export {connectDb, closeDB};
+const cleanDb = () => {
+    return mongoose.connection.db.dropDatabase();
+}
+
+export {connectDb, closeDb, cleanDb};
 
 
