@@ -15,11 +15,11 @@ describe("GET /api/products", () => {
     it("should create new cat", async () => {
         const res = await request(app)
         .post("/api")
-        .send({name : 'Mia', age : 4})
+        .send({name : 'MiaTESTx', age : 4})
         ;
         expect(res.statusCode).toBe(200);
         expect(res.body._id).toBeDefined();
-        expect(res.body.name).toEqual('Mia');
+        expect(res.body.name).toEqual('MiaTESTx');
         expect(res.body.age).toEqual(4)
       });
 
