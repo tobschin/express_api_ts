@@ -27,7 +27,7 @@ describe("GET /api/products", () => {
       ;
     expect(res.statusCode).toBe(200);
     expect(res.body._id).toBeDefined();
-    expect(res.body.name).toEqual('MiaTESTxx');
+    expect(res.body.name).toEqual('MiaTESTx');
     expect(res.body.age).toEqual(4)
   });
 
